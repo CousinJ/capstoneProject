@@ -1,6 +1,8 @@
 //const axios = require("axios");
 // get coinS
 
+//comenting out other requests for time being...
+/*
 const optionsCoins = {
   method: 'GET',
   url: 'https://coinranking1.p.rapidapi.com/coins',
@@ -42,6 +44,10 @@ axios.request(optionsCoin).then(function (response) {
 }).catch(function (error) {
 	console.error(error);
 });
+
+
+*/
+
 //get coin price 
 
 
@@ -59,6 +65,7 @@ axios.request(optionsCoinPrice).then(function (response) {
 	console.log(response.data.data.price);
   const priceElement = document.getElementById('bitPrice')
   priceElement.textContent = response.data.data.price
+  console.log(response.data.data.timestamp)
 }).catch(function (error) {
 	console.error(error);
 });
@@ -111,12 +118,16 @@ let lineChart = new Chart(chart, {
 
 
 function pseudobuy() {
-  axios.post('http://localhost:4005/buy', body)
+  axios.post('http://localhost:4005/buys')
       .then(() => {
+        console.log('successfully purchased bitcoin')
           //conformation that data went into database
       })
 }
 
+ buyButton = document.querySelector('#buyBtn')
+
+buyButton.addEventListener('click', pseudobuy)
 
 
 

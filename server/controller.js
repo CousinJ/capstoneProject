@@ -1,3 +1,4 @@
+const axios = require("axios");
 require('dotenv').config()
 const Sequelize = require('sequelize')
 const {CONNECTION_STRING} = process.env
@@ -36,9 +37,9 @@ module.exports = {
             buyid SERIAL PRIMARY KEY,
             coinName VARCHAR(255),
             timeStamp INTEGER,
-            price INTEGER,
+            price DECIMAL,
             quantity INTEGER,
-            cost INTEGER
+            cost DECIMAL
 
         );
 
@@ -66,7 +67,7 @@ module.exports = {
 
     },
 
-    /*sendbuy: (req, res) => {
+      sendbuy: (req, res) => {
         const optionsCoinPrice = {
             method: 'GET',
             url: 'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/price',
@@ -77,15 +78,26 @@ module.exports = {
             }
           };
           
-          axios.request(optionsCoinPrice).then(function (req, res) {
-            let {coinName, timeStamp, price, quantity, cost} = req.body
-            sequelize.query(`insert into buys(coinName, timeStamp, price, quantity, cost) values (res.data.data.name, res.data.data.timestamp, res.data.data.price, 1, res.data.data.price);`).then(dbres => {res.status(200).send(dbres[0])})
+             axios.request(optionsCoinPrice).then(function(response) {
+
+                let price = parseFloat(response.data.data.price)
+                let time = response.data.data.timestamp
+                sequelize.query(`
+                
+                    INSERT INTO buys
+                    VALUES('1','bitcoin','${time}','${price}','1','${price}')
+                
+                
+                
+                `)
 
           })
+            
+            
               
           
           
-        }   */
+        },   
     }
 
     
