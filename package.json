@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chart.js": "^3.8.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.21.3"
+  }
+}
