@@ -62,10 +62,10 @@ const optionsCoinPrice = {
 };
 
 axios.request(optionsCoinPrice).then(function (response) {
-	console.log(response.data.data.price);
+	
   const priceElement = document.getElementById('bitPrice')
   priceElement.textContent = response.data.data.price
-  console.log(response.data.data.timestamp)
+  
 }).catch(function (error) {
 	console.error(error);
 });
@@ -118,12 +118,14 @@ let lineChart = new Chart(chart, {
 
 
 function pseudobuy() {
-  axios.post('http://localhost:4005/buys')
+  axios.get('http://localhost:4005/buys')
       .then(() => {
         console.log('successfully purchased bitcoin')
           //conformation that data went into database
       })
 }
+
+
 
  buyButton = document.querySelector('#buyBtn')
 
@@ -131,3 +133,96 @@ buyButton.addEventListener('click', pseudobuy)
 
 
 
+
+
+  
+
+
+
+  
+ 
+
+
+
+
+axios.request(optionsCoinPrice).then(function (response) {
+
+  let currentPrice = parseFloat(response.data.data.price)
+  axios.get('http://localhost:4005/cost').then((res) => {
+    //getting the money spent for the coin
+    let totalcost = parseFloat(res.data[0].sum)
+
+    axios.get('http://localhost:4005/value').then((res) => {
+      // getting the value of the coins you bought
+        let quantity = parseInt(res.data[0].sum)
+        
+        let value = quantity * currentPrice
+        
+        const chart = document.getElementById("bargraph")
+
+        let lineChart = new Chart(chart, {
+            type: 'bar',
+            data: {
+                labels: ['cost', 'value'],
+                datasets: [
+                    {
+                        label: "comparisson",
+                        fill: false,
+                        data: [totalcost, value],
+                        borderColor: 'rgb(255, 0, 255)',
+                        backgroundColor: ['rgba(255, 0, 0, 0.5)', 'rgba(0, 255, 0, 0.5)']
+                        
+        
+                    }
+                ]
+            }
+            
+        })
+      
+      }) 
+
+
+
+
+
+  })
+
+	
+    
+}).catch(function (error) {
+	console.error(error);
+});
+
+
+function sellFunction() {
+  axios.request(optionsCoinPrice).then(function (response) {
+
+    let currentPrice = parseFloat(response.data.data.price)
+    axios.get('http://localhost:4005/cost').then((res) => {
+      //getting the money spent for the coin
+      let totalcost = parseFloat(res.data[0].sum)
+  
+      axios.get('http://localhost:4005/value').then((res) => {
+        // getting the value of the coins you bought
+          let quantity = parseInt(res.data[0].sum)
+          
+          let value = quantity * currentPrice
+
+          body= {
+            points: Math.floor(value - totalcost)
+          }
+  axios.post('http://localhost:4005/sell', body)
+
+
+
+
+      })
+    })
+  })
+
+
+
+}
+sellButton = document.querySelector('#sellbtn')
+
+sellButton.addEventListener('click', sellFunction)

@@ -84,8 +84,8 @@ module.exports = {
                 let time = response.data.data.timestamp
                 sequelize.query(`
                 
-                    INSERT INTO buys
-                    VALUES('1','bitcoin','${time}','${price}','1','${price}')
+                    INSERT INTO buys(coinName, timeStamp, price, quantity, cost)
+                    VALUES('bitcoin','${time}','${price}','1','${price}')
                 
                 
                 
@@ -97,7 +97,37 @@ module.exports = {
               
           
           
-        },   
+        },  
+        totalcost: (req, res) => {
+
+        sequelize.query(`
+            SELECT SUM(price)
+            FROM buys
+            
+        
+        
+        `).then((dbres) => {res.status(200).send(dbres[0])})
+
+        }, 
+        totalvalue: (req, res) => {
+
+            sequelize.query(`
+                SELECT SUM(quantity)
+                FROM buys
+
+            `).then((dbres) => {res.status(200).send(dbres[0])})
+        }, 
+        sendsell: (req, res) => {
+            let {points} = req.body
+            sequelize.query(`
+                INSERT INTO myStats
+                VALUES('${points}');
+
+                DELETE FROM buys WHERE coinName ='bitcoin'
+            
+            `)
+        }
+        
     }
 
     
