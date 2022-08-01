@@ -1,3 +1,62 @@
 body {
-    background-color: #08021b;
+    background-color: #03010a;
+}
+
+h3 {
+    color:goldenrod;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
+    
+}
+
+p {
+    color:green;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
+    
+}
+
+img {
+    width: 200px;
+    border-radius: 30px;
+    
+    
+    
+   
+}
+
+button {
+    color:black;
+    background-color: silver;
+    margin-left:47%;
+    height: 30px;
+    width: 150px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+   
+}
+
+h1 {
+    color:goldenrod
+}
+
+.crumb.coins {
+    position: absolute;
+    top:10%; 
+    left: 53%;
+}
+.crumb.profile {
+    position: absolute;
+    top:10%; 
+    left: 48%;
+}
+
+h2 {
+    color: silver
+}
+
+#losses {
+    color:red
+}
+#gains {
+    color:greenyellow
 }

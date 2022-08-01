@@ -9,26 +9,33 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <nav>
-        <ol>
-              <li class="crumb"><a href="./index.html">Coins</a></li>
-              <li class="crumb"><a href="./profile.html">Profile</a></li>
-              
-          </ol>
-    <div>
-        <canvas id="bargraph" width="1000" height="200"></canvas>
-        <button id="sellbtn">sell</button>
-    </div>
-    <div>
-        <h2> portfolio</h2>
-        <h3>psuedo dollars</h3>
+    <header>
         <div>
-            <p>coin</p>
-            <p>timestamp</p>
-            <p>gains or loss</p>
-            
+          <h1>cryptoworld</h1>
+          <img src="https://i.pinimg.com/236x/35/d0/a0/35d0a0dffc5c1e77d53813464182720f.jpg">
+          <nav>
+            <ul>
+                  <li class="crumb coins"><a href="./index.html">Coins</a></li>
+                  <li class="crumb profile"><a href="./profile.html">Profile</a></li>
+                  
+              </ul>
         </div>
+       
+      </header>
+      <h2>Gains <p id="gains"></p></h2> 
+      <h2>Losses <p id="losses"></p></h2> 
+    <div>
+        <canvas id="bitbargraph" width="1000" height="150"></canvas>
+        <button id="sellBitbtn">sell</button>
     </div>
+    <div>
+        <canvas id="ethbargraph" width="1000" height="150"></canvas>
+        <button id="sellEthbtn">sell</button>
+    </div>
+       
+        <canvas id="pie" width="1000" height="300"></canvas>
+        
+    <div></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js
     "></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

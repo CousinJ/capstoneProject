@@ -49,9 +49,10 @@ axios.request(optionsCoin).then(function (response) {
 */
 
 //get coin price 
+// etherum id    razxDUgYGNAdQ
+// bitcoin id    Qwsogvtv82FCd
 
-
-const optionsCoinPrice = {
+const optionsbitCoinPrice = {
   method: 'GET',
   url: 'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/price',
   params: {referenceCurrencyUuid: 'yhjMzLPhuIDl'},
@@ -61,10 +62,10 @@ const optionsCoinPrice = {
   }
 };
 
-axios.request(optionsCoinPrice).then(function (response) {
+axios.request(optionsbitCoinPrice).then(function (response) {
 	
-  const priceElement = document.getElementById('bitPrice')
-  priceElement.textContent = response.data.data.price
+  const bitpriceElement = document.getElementById('bitPrice')
+  bitpriceElement.textContent = response.data.data.price
   
 }).catch(function (error) {
 	console.error(error);
@@ -74,7 +75,7 @@ axios.request(optionsCoinPrice).then(function (response) {
 //get past 30 days price history 
 
 
-const optionsHistory = {
+const optionsbitHistory = {
   method: 'GET',
   url: 'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history',
   params: {referenceCurrencyUuid: 'yhjMzLPhuIDl', timePeriod: '30d'},
@@ -84,7 +85,7 @@ const optionsHistory = {
   }
 };
 
- const pricehistory = axios.request(optionsHistory).then(function (response) {
+ const bitpricehistory = axios.request(optionsbitHistory).then(function (response) {
   pricehis = [] 
   for(i = 0; i < 30; i++) {
    
@@ -102,7 +103,84 @@ let lineChart = new Chart(chart, {
                 label: "30d prices",
                 fill: false,
                 data: pricehis,
-                borderColor: 'rgb(255, 0, 255)',
+                borderColor: 'rgb(255,127,80)',
+                tension: 0.1
+
+            }
+        ]
+    }
+    
+})
+  
+	
+}).catch(function (error) {
+	console.error(error);
+});
+
+function bitbuy() {
+  axios.get('http://localhost:4005/buybit')
+      .then(() => {
+        console.log('successfully purchased bitcoin')
+          //conformation that data went into database
+      })
+}
+
+
+
+
+ buybitButton = document.querySelector('#buybitBtn')
+
+buybitButton.addEventListener('click', bitbuy)
+//===================================ETHEREUM====================================
+//=====================price listed=====================================
+const optionsEthCoinPrice = {
+  method: 'GET',
+  url: 'https://coinranking1.p.rapidapi.com/coin/razxDUgYGNAdQ/price',
+  params: {referenceCurrencyUuid: 'yhjMzLPhuIDl'},
+  headers: {
+    'X-RapidAPI-Key': '7ef8096cd4mshb8b1d3e4ea83e07p146aa5jsn5fe7a8d917f4',
+    'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+  }
+};
+
+axios.request(optionsEthCoinPrice).then(function (response) {
+	
+  const ethpriceElement = document.getElementById('ethPrice')
+  ethpriceElement.textContent = response.data.data.price
+  
+}).catch(function (error) {
+	console.error(error);
+});
+//==================graph for pricing=====================================
+const optionsEthHistory = {
+  method: 'GET',
+  url: 'https://coinranking1.p.rapidapi.com/coin/razxDUgYGNAdQ/history',
+  params: {referenceCurrencyUuid: 'yhjMzLPhuIDl', timePeriod: '30d'},
+  headers: {
+    'X-RapidAPI-Key': '7ef8096cd4mshb8b1d3e4ea83e07p146aa5jsn5fe7a8d917f4',
+    'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+  }
+};
+
+ const ethpricehistory = axios.request(optionsEthHistory).then(function (response) {
+  pricehis2 = [] 
+  for(i = 0; i < 30; i++) {
+   
+   
+    pricehis2.push(response.data.data.history[i].price)
+  }
+    const chart2 = document.getElementById("lineChart2")
+
+let lineChart = new Chart(chart2, {
+    type: 'line',
+    data: {
+        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 25, 26, 27, 28, 29, 30],
+        datasets: [
+            {
+                label: "30d prices",
+                fill: false,
+                data: pricehis2,
+                borderColor: 'rgb(0, 255, 250)',
                 tension: 0.1
 
             }
@@ -117,18 +195,17 @@ let lineChart = new Chart(chart, {
 });
 
 
-function pseudobuy() {
-  axios.get('http://localhost:4005/buys')
+
+
+function ethbuy() {
+  axios.get('http://localhost:4005/buyeth')
       .then(() => {
-        console.log('successfully purchased bitcoin')
+        console.log('successfully purchased ethereum')
           //conformation that data went into database
       })
 }
 
+ buyethButton = document.querySelector('#buyethBtn')
 
-
- buyButton = document.querySelector('#buyBtn')
-
-buyButton.addEventListener('click', pseudobuy)
-
+buyethButton.addEventListener('click', ethbuy)
 
