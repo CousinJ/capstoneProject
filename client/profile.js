@@ -26,11 +26,12 @@ axios.request(optionsbitCoinPrice).then(function (response) {
   
           let lineChart = new Chart(chart, {
               type: 'bar',
+              options: {responsive: false},
               data: {
                   labels: ['cost', 'value'],
                   datasets: [
                       {
-                          label: "BITCOIN",
+                          label: "Bitcoin",
                           fill: false,
                           data: [totalcost, value],
                           borderColor: ['rgb(0, 0, 0)', 'rgb(0, 0, 0)', ],
@@ -120,12 +121,12 @@ axios.request(optionsEthCoinPrice).then(function (response) {
   
           let lineChart = new Chart(chart, {
               type: 'bar',
-              
+              options: {responsive: false},
               data: {
                   labels: ['cost', 'value'],
                   datasets: [
                       {
-                          label: "ETHEREUM",
+                          label: 'Ethereum',
                           fill: false,
                           data: [totalcost, value],
                           borderColor: ['rgb(0, 0, 0)', 'rgb(0, 0, 0)', ],
@@ -207,9 +208,9 @@ axios.request(optionsEthCoinPrice).then(function (response) {
                   label: "portfolio",
                   fill: false,
                   data: [numberOEth, numberOBit],
-                  borderColor: ['rgb(0, 0, 0)', 'rgb(0, 0, 0)', ],
-                  borderWidth: 1,
-                  backgroundColor: ['rgba(255,127,80, 0.8)', 'rgba(0, 255, 250, 0.8)'],
+                  borderColor: ['rgb(0, 0, 0)', ],
+                  borderWidth: 2,
+                  backgroundColor: ['rgb(255,100,62)', 'rgb(0, 255, 250)'],
                   
 
 

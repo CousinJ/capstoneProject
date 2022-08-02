@@ -1,57 +1,68 @@
+
+
 body {
-    background-color: #03010a;
+    background-color: #191919;
+   
 }
 
 h3 {
     color:goldenrod;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
+
     
     
 }
 
 p {
     color:green;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
+
     
     
 }
 
 img {
-    width: 200px;
-    border-radius: 30px;
+    width: 90px;
+    height: 80px;
+    border-radius: 360%;
+    position: absolute ;
+    top: 1%;
+    left: 16%;
     
     
-    
-   
 }
+
 
 button {
     color:black;
-    background-color: silver;
+    background-image: linear-gradient(to right, white, silver);
     margin-left:47%;
     height: 30px;
     width: 150px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
+
    
+}
+button:hover {
+    background-color: silver;
+    
 }
 
 h1 {
-    color:goldenrod
+    
+    font-family: 'Montserrat Alternates', sans-serif;
+    background: -webkit-linear-gradient(blue, purple, orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: none;
+
+    
 }
 
-.crumb.coins {
-    position: absolute;
-    top:10%; 
-    left: 53%;
-}
-.crumb.profile {
-    position: absolute;
-    top:10%; 
-    left: 48%;
-}
 
 h2 {
-    color: silver
+    color: silver;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 #losses {
@@ -60,3 +71,67 @@ h2 {
 #gains {
     color:greenyellow
 }
+
+/*  GRAPH AND SELL BUTTON ON PROFILE */
+#bitbargraph {
+    position: absolute; 
+    top: 50%;
+    left: 20%
+}
+#sellBitbtn {
+    position: absolute; 
+    top: 70%;
+    left: 2.5%
+}
+
+#ethbargraph {
+    position: absolute; 
+    top: 80%;
+    left: 20%;
+    
+}
+#sellEthbtn {
+    position: absolute; 
+    top: 100%;
+    left: 2.5%
+}
+/* PIE CHART PLACMENT */
+#pie {
+    position: absolute;
+    left: 22%;
+    top:110%
+}
+
+/* CHANGING THE NAVIGATION BAR TO THE DESIRED STYLE. */
+ul {
+    background-color: #dddddd;
+  }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-image: linear-gradient(to left, blue , purple, orange);
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Montserrat Alternates', sans-serif;
+    
+
+  }
+  
+ 
+  li a:hover {
+    background-color: #111;
+  }
+
+ 

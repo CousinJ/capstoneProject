@@ -13,7 +13,7 @@ app.get('/pieEth', pieDataBit)
 app.get('/pieBit', pieDataEth)
 app.get('/gains', getGains)
 app.get('/losses', getLosses)
-
+//=========BITCOIN===========
 app.get('/buybit', sendbitbuy)
 app.get('/bitcost', totalbitcost)
 app.get('/bitvalue', totalbitvalue)

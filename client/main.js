@@ -1,54 +1,4 @@
-//const axios = require("axios");
-// get coinS
 
-//comenting out other requests for time being...
-/*
-const optionsCoins = {
-  method: 'GET',
-  url: 'https://coinranking1.p.rapidapi.com/coins',
-  params: {
-    referenceCurrencyUuid: 'yhjMzLPhuIDl',
-    timePeriod: '24h',
-    'tiers[0]': '1',
-    orderBy: 'marketCap',
-    orderDirection: 'desc',
-    limit: '50',
-    offset: '0'
-  },
-  headers: {
-    'X-RapidAPI-Key': '7ef8096cd4mshb8b1d3e4ea83e07p146aa5jsn5fe7a8d917f4',
-    'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
-  }
-};
-
-axios.request(optionsCoins).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
-// get coin 
-
-
-const optionsCoin = {
-  method: 'GET',
-  url: 'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd',
-  params: {referenceCurrencyUuid: 'yhjMzLPhuIDl', timePeriod: '24h'},
-  headers: {
-    'X-RapidAPI-Key': '7ef8096cd4mshb8b1d3e4ea83e07p146aa5jsn5fe7a8d917f4',
-    'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
-  }
-};
-
-axios.request(optionsCoin).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
-
-
-*/
-
-//get coin price 
 // etherum id    razxDUgYGNAdQ
 // bitcoin id    Qwsogvtv82FCd
 
@@ -103,7 +53,7 @@ let lineChart = new Chart(chart, {
                 label: "30d prices",
                 fill: false,
                 data: pricehis,
-                borderColor: 'rgb(255,127,80)',
+                borderColor: 'rgb(255,100,62)',
                 tension: 0.1
 
             }
@@ -119,8 +69,8 @@ let lineChart = new Chart(chart, {
 
 function bitbuy() {
   axios.get('http://localhost:4005/buybit')
-      .then(() => {
-        console.log('successfully purchased bitcoin')
+      .then((res) => {
+        alert('Bitcoin x1 successfully purchased.')
           //conformation that data went into database
       })
 }
@@ -181,7 +131,8 @@ let lineChart = new Chart(chart2, {
                 fill: false,
                 data: pricehis2,
                 borderColor: 'rgb(0, 255, 250)',
-                tension: 0.1
+                tension: 0.1,
+                
 
             }
         ]
@@ -199,8 +150,8 @@ let lineChart = new Chart(chart2, {
 
 function ethbuy() {
   axios.get('http://localhost:4005/buyeth')
-      .then(() => {
-        console.log('successfully purchased ethereum')
+      .then((res) => {
+       alert('Ethereum x1 successfully purchased.')
           //conformation that data went into database
       })
 }

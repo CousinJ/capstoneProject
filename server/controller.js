@@ -12,20 +12,11 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 })
 
 
-//database needs to contain....
-//coin information on psuedo buys...
-//coin name
-// price 
-//timestamp 
 
-
-//also will need to contain total money (points) gained from the system
 
 module.exports = {
     seed: (req, res) => {
-        // Axios request to API
-        // Inside .then of Axios, set up Sequelize query
-        // Once SQL finishes, send data with res.data(200).send(infothatyouwanttosendback)
+        
         sequelize.query(`
 
         drop table if exists buys;
@@ -91,7 +82,9 @@ module.exports = {
                 
                 
                 
-                `)
+                `).then(() => {
+                    res.sendStatus(200)
+                }).catch(err => console.log( 'err'))
 
           })
             
@@ -160,7 +153,10 @@ module.exports = {
                     
                     
                     
-                    `)
+                    `).then(() => {
+                        res.sendStatus(200)
+                    }).catch(err => console.log( 'err'))
+            
     
               })
                 
