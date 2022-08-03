@@ -78,7 +78,7 @@ axios.request(optionsbitCoinPrice).then(function (response) {
             body= {
               points: Math.floor(value - totalcost)
             }
-    axios.post('http://localhost:4005/bitsell', body)
+    axios.post('http://localhost:4005/bitsell', body).then(()=>{alert(`Bitcoin x${quantity} successfully sold. net profit: $${Math.floor(value - totalcost)}`)})
   
   
   
@@ -174,7 +174,8 @@ axios.request(optionsEthCoinPrice).then(function (response) {
             body= {
               points: Math.floor(value - totalcost)
             }
-    axios.post('http://localhost:4005/ethsell', body)
+           
+    axios.post('http://localhost:4005/ethsell', body).then(()=>{alert(`Ethereum x${quantity} successfully sold. net profit: $${Math.floor(value - totalcost)}`)})
   
   
   

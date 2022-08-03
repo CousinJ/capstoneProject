@@ -35,7 +35,7 @@ img {
 
 button {
     color:black;
-    background-image: linear-gradient(to right, white, silver);
+    background-color: white;
     margin-left:47%;
     height: 30px;
     width: 150px;
@@ -44,7 +44,7 @@ button {
    
 }
 button:hover {
-    background-color: silver;
+    background-color: grey;
     
 }
 
@@ -81,7 +81,7 @@ h2 {
 #sellBitbtn {
     position: absolute; 
     top: 70%;
-    left: 2.5%
+    left:  -3.5%
 }
 
 #ethbargraph {
@@ -93,7 +93,7 @@ h2 {
 #sellEthbtn {
     position: absolute; 
     top: 100%;
-    left: 2.5%
+    left: -3.5%
 }
 /* PIE CHART PLACMENT */
 #pie {

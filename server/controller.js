@@ -122,13 +122,15 @@ module.exports = {
 
                 DELETE FROM buys WHERE coinName ='bitcoin'
             
-            `)} else if(points > 0) { sequelize.query(`
+            `).then(() => {res.sendStatus(200)})} else if(points > 0) { sequelize.query(`
             INSERT INTO myStats(gains)
             VALUES('${points}');
 
             DELETE FROM buys WHERE coinName ='bitcoin'
         
-        `)}
+        `).then(() => {
+            res.sendStatus(200)
+        }).catch(err => console.log( 'err'))}
         },
         //=======================ETHEREUM=========================
         sendEthbuy: (req, res) => {
@@ -194,13 +196,15 @@ module.exports = {
     
                     DELETE FROM buys WHERE coinName ='ethereum'
                 
-                `)} else if(points > 0) { sequelize.query(`
+                `).then(() => {res.sendStatus(200)})} else if(points > 0) { sequelize.query(`
                 INSERT INTO myStats(gains)
                 VALUES('${points}');
 
                 DELETE FROM buys WHERE coinName ='ethereum'
             
-            `)}
+            `).then(() => {
+                res.sendStatus(200)
+            }).catch(err => console.log( 'err'))}
             },
 
             pieDataEth: (req, res) => {
